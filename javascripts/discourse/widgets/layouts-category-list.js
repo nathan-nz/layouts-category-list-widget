@@ -536,9 +536,14 @@ createWidget('layouts-category-link', {
       )
     );
 
+// Code to add globes to widget 
     if (category.name === "Open Forum") {
       contents.push(iconNode("globe", { class: 'category-lock-icon' }));
     }
+    if (category.name === "Blog") {
+      contents.push(iconNode("globe", { class: 'category-lock-icon' }));
+    }
+    
     
     if (category.read_restricted) {
       contents.push(iconNode(lockIcon, { class: 'category-lock-icon' }));
