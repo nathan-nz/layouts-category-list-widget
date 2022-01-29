@@ -667,3 +667,28 @@ createWidget('layouts-custom-link', {
     }
   },
 });
+
+createWidget('layouts-group-link', {
+  tagName: 'li.layouts-group-link',
+  buildKey: (attrs) => `layouts-group-link-${attrs.id}`,
+
+  getGroupTitle(group) {
+    return h('span.group-title', group.name);
+  },
+
+  isOwner(group) {
+    if (group.owner) {
+      return h('span.group-owner-icon', iconNode('shield-alt'));
+    }
+  },
+
+  html(attrs) {
+    const contents = [this.getGroupTitle(attrs), this.isOwner(attrs)];
+    return contents;
+  },
+
+  click() {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
+  },
+});
+
